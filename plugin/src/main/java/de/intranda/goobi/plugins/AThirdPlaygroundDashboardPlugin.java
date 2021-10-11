@@ -10,16 +10,16 @@ import net.xeoh.plugins.base.annotations.PluginImplementation;
 
 @PluginImplementation
 @Log4j2
-public class SampleDashboardPlugin implements IDashboardPlugin {
+public class AThirdPlaygroundDashboardPlugin implements IDashboardPlugin {
 
     @Getter
-    private String title = "intranda_dashboard_sample";
+    private String title = "intranda_dashboard_a-third-playground";
 
     @Getter
     private PluginType type = PluginType.Dashboard;
     
     @Getter
-    private String guiPath = "/uii/plugin_dashboard_sample.xhtml";
+    private String guiPath = "/uii/plugin_dashboard_a-third-playground.xhtml";
     
     @Getter
     private String value;
@@ -27,8 +27,8 @@ public class SampleDashboardPlugin implements IDashboardPlugin {
     /**
      * Constructor
      */
-    public SampleDashboardPlugin() {
-        log.info("Sample dashboard plugin started");
+    public AThirdPlaygroundDashboardPlugin() {
+        log.info("A-third-playground dashboard plugin started");
         value = ConfigPlugins.getPluginConfig(title).getString("value", "default value");
     }   
 
