@@ -3,6 +3,7 @@
   <groupId>de.intranda.goobi.plugins.dashboard</groupId>
   <artifactId>a-third-playground-main</artifactId>
   <version>1.0.0</version>
+  
   <properties>
     <jar.name>plugin_intranda_dashboard_a-third-playground</jar.name>
     <dest.folder>/opt/digiverso/goobi/plugins/administration/</dest.folder>
