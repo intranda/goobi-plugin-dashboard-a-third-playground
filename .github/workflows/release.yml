@@ -29,19 +29,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ steps.tagdate.outputs.tagdate }}
-        release_name: Release ${{ steps.date.outputs.date }}
+        release_name: ${{ steps.date.outputs.date }}
         draft: false
         prerelease: false
-    - name: Upload GUI asset
-      id: upload-gui-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: plugin/module-gui/target/plugin_intranda_dashboard_a-third-playground-GUI.jar
-        asset_name: plugin_intranda_dashboard_a-third-playground-GUI.jar
-        asset_content_type: application/jar
     - name: Upload main asset
       id: upload-main-asset
       uses: actions/upload-release-asset@v1
@@ -51,4 +41,24 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
         asset_path: plugin/module-main/target/plugin_intranda_dashboard_a-third-playground.jar
         asset_name: plugin_intranda_dashboard_a-third-playground.jar
+        asset_content_type: application/jar    - name: Upload GUI asset
+      id: upload-gui-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: plugin/module-gui/target/plugin_intranda_dashboard_a-third-playground-GUI.jar
+        asset_name: plugin_intranda_dashboard_a-third-playground-GUI.jar
         asset_content_type: application/jar
+        - name: Upload Config asset
+      id: upload-config-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: plugin/plugin_intranda_dashboard_a-third-playground.xml
+        asset_name: plugin_intranda_dashboard_a-third-playground.xml
+        asset_content_type: text/xml
+    
